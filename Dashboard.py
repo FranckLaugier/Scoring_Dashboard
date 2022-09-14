@@ -10,9 +10,9 @@ import seaborn as sns
 import plotly.graph_objects as go
 import shap
 
-# URL API
-# URL_API = "http://127.0.0.1:5000/"
-URL_API = 'https://franck-app-heroku.herokuapp.com/'
+# URL API : local et cloud
+URL_API = "http://127.0.0.1:5000/"
+# URL_API = 'https://franck-app-heroku.herokuapp.com/'
 
 st.set_page_config(layout="wide") # Affichage large
 
@@ -93,13 +93,45 @@ def accueil():
     with col2:
         st.title("P7 - Implémenter un modèle de scoring")
 
-    st.write('Ecrire plein plein de texte')
+    st.write('')
+    st.write('')
+    st.write('')
+    st.write('Dans le cardre du parcours Data Scientist, nous travaillons pour l’entreprise : "Prêt à dépenser".')
+    st.write('')
+
+    mystyle = '''
+        <style>
+            p {
+                text-align: justify;
+            }
+        </style>
+        '''
+
+    st.markdown(mystyle, unsafe_allow_html=True)
+    st.write('L’entreprise souhaite mettre en œuvre un outil de “scoring crédit” pour calculer la probabilité qu’un client rembourse son crédit en s’appuyant' 
+    ' sur des sources de données variées (données comportementales, données provenant d’autres institutions financières, etc.).'
+    ' Prêt à dépenser décide donc de développer un dashboard interactif pour que les chargés de relation client puissent'
+    ' à la fois expliquer de façon la plus transparente possible les décisions d’octroi de crédit, '
+    ' mais également permettre à leurs clients de disposer de leurs informations personnelles et de les explorer facilement. ')
+
+    st.header('Spécifications du dashboard')
+    st.write(' - Permettre de visualiser le score et l’interprétation de ce score pour chaque client')
+    st.write(' - Permettre de visualiser des informations descriptives relatives à un client')
+    st.write(' - Permettre de comparer les informations descriptives relatives à un client à l’ensemble des clients')
+
+    st.write('')
+    st.write('')
+    st.write('')
+    st.write('Le calcul de la probabilité doit être réalisé via une API dans le cloud.')
 
 def load_prediction(id_client):
     # Requête permettant de récupérer la prédiction de faillite du client sélectionné
+    print(id_client)
     pred = requests.get(URL_API + "prediction/" + str(id_client), params={"id_client": id_client})
+    print(pred)
     pred = pred.json()
     prediction = pred['prediction'][1]
+    print(prediction)
 
     if prediction > 0.495:
         decision = "Rejeté"
