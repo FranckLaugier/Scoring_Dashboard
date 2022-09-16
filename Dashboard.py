@@ -408,7 +408,7 @@ def graph_hist(title, pos, col, index_client, id_client):
         df_temp = df.reset_index() # Reset_index pour mettre l'index en colonne
         df_temp.rename(columns={'index': col}, inplace=True) # Remplace la nouvelle colonne 'index' par le nom de la feature
         df_temp = df_temp.melt(id_vars=[col], var_name='TARGET')
-        palette = ['red', 'green']
+        palette = ['green', 'red']
         sns.barplot(y='value', x=col, hue='TARGET', data=df_temp, palette=palette)
         value_client = df_hist[df_hist['SK_ID_CURR'] == id_client][col].iloc[0] # Récupération de la valeur de l'histogramme pour la feature donnée
         # Pour le x il faut un nombre (0, 1, 2, ...) pour positionner la barre sur le barplot
