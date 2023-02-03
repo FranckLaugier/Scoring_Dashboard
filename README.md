@@ -1,6 +1,6 @@
-# OpenClassRooms_P7_Dashboard
+# Scoring_Dashboard
 
-Dans le cadre du projet P7, déploiement d'un Dashboard sous Streamlit. 
+Déploiement d'un Dashboard sous Streamlit. 
 L'objectif est de pouvoir visualiser de façon claire la probabilité de non remboursement d'un éventuel crédit en fournissant des explications sur cette probabilité.
 Ce Dashboard doit également permettre de positionner le client vis à vis des autres clients de la base.
 
